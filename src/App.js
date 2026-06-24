@@ -20,7 +20,7 @@ const inactiveUsers = users.filter(
  const [editingUsers, setEditingUsers] = useState([]);
   
   useEffect(() => {
-  fetch("http://100.54.146.47:5000/users")
+  fetch("http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users")
     .then((res) => res.json())
     .then((data) => {
       setUsers(data);
@@ -30,7 +30,7 @@ const inactiveUsers = users.filter(
 
   const addUser = async (user) => {
   try {
-    await fetch("http://100.54.146.47:5000/users", {
+    await fetch("http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const inactiveUsers = users.filter(
     });
 
     const response = await fetch(
-      "http://100.54.146.47:5000/users"
+      "http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users"
     );
 
     const data = await response.json();
@@ -56,14 +56,14 @@ const inactiveUsers = users.filter(
   try {
 
     await fetch(
-      `http://100.54.146.47:5000/users/${id}`,
+      `http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users/${id}`,
       {
         method: "DELETE",
       }
     );
 
     const response = await fetch(
-      "http://100.54.146.47:5000/users"
+      "http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users"
     );
 
     const data = await response.json();
@@ -100,7 +100,7 @@ const updateUser = async (updatedUser) => {
   try {
 
     await fetch(
-      `http://100.54.146.47:5000/users/${updatedUser.id}`,
+      `http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users/${updatedUser.id}`,
       {
         method: "PUT",
         headers: {
@@ -111,7 +111,7 @@ const updateUser = async (updatedUser) => {
     );
 
     const response = await fetch(
-      "http://100.54.146.47:5000/users"
+      "http://user-management-alb-670460146.us-east-1.elb.amazonaws.com/users"
     );
 
     const data = await response.json();
